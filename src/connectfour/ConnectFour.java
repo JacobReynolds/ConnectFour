@@ -25,7 +25,6 @@ public class ConnectFour {
                 System.out.print(board[j][i]);
             }
             System.out.println();
-           
         }
     }
    
@@ -62,7 +61,6 @@ public class ConnectFour {
 
         boolean redWins = false;
         boolean blueWins = false;
-                
 //        
         //---Checking for horizontal winner
         for (int y = 0; y < 6; y++) 
@@ -367,9 +365,7 @@ public class ConnectFour {
         //---Places piece on board
         for (int i = 0; i < board[0].length ; i++) 
         {
-            
             int row = board[columnIndex][i];
-            
             if (row == 0 || row == 1)
             {
                 if (this.currentplayer == 0)
@@ -402,10 +398,9 @@ public class ConnectFour {
                 }
             
         }
-        
         printBoard();
-         }
-    }
+        }
+    }   
         
         
     }

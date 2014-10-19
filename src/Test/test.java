@@ -20,7 +20,6 @@ public class test {
          ConnectFour instance = new ConnectFour();
          instance.wipeBoard();
 
-
     
     while (instance.getWinner().contentEquals("No winner yet"))
     {
@@ -28,14 +27,9 @@ public class test {
          System.out.println("Please choose a column " + instance.getCurrentPlayer() + ":");
          String output = input.nextLine();
          int answer = 0;
-       
          instance.makeMove(output);
     }
-    
          System.out.println(instance.getWinner());
-    
-    
-    
      }
     
 }
