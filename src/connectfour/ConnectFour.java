@@ -6,12 +6,10 @@
 
 package connectfour;
 
-import java.util.Scanner;
-import java.util.ArrayList;
 
 public class ConnectFour {
     int currentplayer = 0;
-    int board[][] = new int[7][6];
+    String board[][] = new String[7][6];
 //    Scanner scan = new Scanner(System.in);
 //    String column = scan.nextLine();
 //    int newColumn = Integer.parseInt(column);
@@ -34,7 +32,7 @@ public class ConnectFour {
         {
             for (int j = 0; j < board[i].length; j++) 
             {
-                board[i][j] = 2;
+                board[i][j] = "O";
             }
         }
     }
@@ -67,17 +65,17 @@ public class ConnectFour {
         {
             for (int x = 0; x < 7; x++) 
             {
-            if (board[x][y] == 0)
+            if (board[x][y].contentEquals("R"))
                     {
                       countRedh += 1;  
                       countBlueh = 0;
                     }
-            if (board[x][y] == 1)
+            if (board[x][y].contentEquals("B"))
             {
                 countRedh = 0;
                 countBlueh += 1;
             }
-            if (board[x][y] == 2)
+            if (board[x][y].contentEquals("O"))
             {
                 countRedh = 0;
                 countBlueh = 0;
@@ -105,17 +103,17 @@ public class ConnectFour {
         {
             for (int y = 0; y < 6; y++) 
             {
-            if (board[x][y] == 0)
+            if (board[x][y].contentEquals("R"))
                     {
                       countRedh += 1;  
                       countBlueh = 0;
                     }
-            if (board[x][y] == 1)
+            if (board[x][y].contentEquals("B"))
             {
                 countRedh = 0;
                 countBlueh += 1;
             }
-            if (board[x][y] == 2)
+            if (board[x][y].contentEquals("O"))
             {
                 countRedh = 0;
                 countBlueh = 0;
@@ -143,17 +141,19 @@ public class ConnectFour {
         {
             for (int x = 0; x < 4; x++) 
             {
-            if (board[x][y] == 0 && board[x + 1][y + 1] == 0 && board[x + 2][y + 2] == 0 && board[x + 3][y + 3] == 0)
+            if (board[x][y].contentEquals("R") && board[x + 1][y + 1].contentEquals("R")
+               && board[x + 2][y + 2].contentEquals("R") && board[x + 3][y + 3].contentEquals("R"))
                     {
                       countRedh += 4;  
                       countBlueh = 0;
                     }
-            if (board[x][y] == 1 && board[x + 1][y + 1] == 1 && board[x + 2][y + 2] == 1 && board[x + 3][y + 3] == 1)
+            if (board[x][y].contentEquals("B") && board[x + 1][y + 1].contentEquals("B")
+               && board[x + 2][y + 2].contentEquals("B") && board[x + 3][y + 3].contentEquals("B"))
             {
                 countRedh = 0;
                 countBlueh += 4;
             }
-            if (board[x][y] == 2)
+            if (board[x][y].contentEquals("O"))
             {
                 countRedh = 0;
                 countBlueh = 0;
@@ -181,17 +181,19 @@ public class ConnectFour {
         {
             for (int x = 6; x > 2; x--) 
             {
-            if (board[x][y] == 0 && board[x - 1][y + 1] == 0 && board[x - 2][y + 2] == 0 && board[x - 3][y + 3] == 0)
+            if (board[x][y].contentEquals("R") && board[x - 1][y + 1].contentEquals("R")
+               && board[x - 2][y + 2].contentEquals("R") && board[x - 3][y + 3].contentEquals("R"))
                     {
                       countRedh += 4;  
                       countBlueh = 0;
                     }
-            if (board[x][y] == 1 && board[x - 1][y + 1] == 1 && board[x - 2][y + 2] == 1 && board[x - 3][y + 3] == 1)
+            if (board[x][y].contentEquals("B") && board[x - 1][y + 1].contentEquals("B")
+               && board[x - 2][y + 2].contentEquals("B") && board[x - 3][y + 3].contentEquals("B"))
             {
                 countRedh = 0;
                 countBlueh += 4;
             }
-            if (board[x][y] == 2)
+            if (board[x][y].contentEquals("O"))
             {
                 countRedh = 0;
                 countBlueh = 0;
@@ -220,17 +222,19 @@ public class ConnectFour {
         {
             for (int x = 0; x < 4; x++) 
             {
-            if (board[x][y] == 0 && board[x + 1][y - 1] == 0 && board[x + 2][y - 2] == 0 && board[x + 3][y - 3] == 0)
+            if (board[x][y].contentEquals("R") && board[x + 1][y - 1].contentEquals("R")
+               && board[x + 2][y - 2].contentEquals("R") && board[x + 3][y - 3].contentEquals("R"))
                     {
                       countRedh += 4;  
                       countBlueh = 0;
                     }
-            if (board[x][y] == 1 && board[x + 1][y - 1] == 1 && board[x + 2][y - 2] == 1 && board[x + 3][y - 3] == 1)
+            if (board[x][y].contentEquals("B") && board[x + 1][y - 1].contentEquals("B") 
+               && board[x + 2][y - 2].contentEquals("B") && board[x + 3][y - 3].contentEquals("B"))
             {
                 countRedh = 0;
                 countBlueh += 4;
             }
-            if (board[x][y] == 2)
+            if (board[x][y].contentEquals("O"))
             {
                 countRedh = 0;
                 countBlueh = 0;
@@ -259,17 +263,19 @@ public class ConnectFour {
         {
             for (int x = 6; x > 3; x--) 
             {
-            if (board[x][y] == 0 && board[x - 1][y - 1] == 0 && board[x - 2][y - 2] == 0 && board[x - 3][y - 3] == 0)
+            if (board[x][y].contentEquals("R") && board[x - 1][y - 1].contentEquals("R")
+               && board[x - 2][y - 2].contentEquals("R") && board[x - 3][y - 3].contentEquals("R"))
                     {
                       countRedh += 4;  
                       countBlueh = 0;
                     }
-            if (board[x][y] == 1 && board[x - 1][y - 1] == 1 && board[x - 2][y - 2] == 1 && board[x - 3][y - 3] == 1)
+            if (board[x][y].contentEquals("B") && board[x - 1][y - 1].contentEquals("B")
+               && board[x - 2][y - 2].contentEquals("B") && board[x - 3][y - 3].contentEquals("B"))
             {
                 countRedh = 0;
                 countBlueh += 4;
             }
-            if (board[x][y] == 2)
+            if (board[x][y].contentEquals("O"))
             {
                 countRedh = 0;
                 countBlueh = 0;
@@ -357,7 +363,7 @@ public class ConnectFour {
         int columnIndex = Integer.parseInt(columnStringIndex);
         
         //---Checks to make sure piece is not already taken
-        if (board[columnIndex][0] != 2)
+        if (!board[columnIndex][0].contentEquals("O"))
             {
                 System.out.println("Invalid entry");
                 return;
@@ -365,18 +371,18 @@ public class ConnectFour {
         //---Places piece on board
         for (int i = 0; i < board[0].length ; i++) 
         {
-            int row = board[columnIndex][i];
-            if (row == 0 || row == 1)
+            String row = board[columnIndex][i];
+            if (row.contentEquals("R") || row.contentEquals("B"))
             {
                 if (this.currentplayer == 0)
                 {
-                board[columnIndex][i - 1] = 0;
+                board[columnIndex][i - 1] = "R";
                 currentplayer = 1;
                 break;
                 }
                 else
                 {
-                board[columnIndex][i - 1] = 1;   
+                board[columnIndex][i - 1] = "B";   
                 currentplayer = 0;
                 break;
                 }
@@ -385,13 +391,13 @@ public class ConnectFour {
                 {
                     if (this.currentplayer == 0)
                 {
-                board[columnIndex][i] = 0;
+                board[columnIndex][i] = "R";
                 currentplayer = 1;
                 break;
                 }
                 else
                 {
-                board[columnIndex][i] = 1;  
+                board[columnIndex][i] = "B";  
                 currentplayer = 0;
                 break;
                 }
