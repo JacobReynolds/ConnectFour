@@ -8,13 +8,11 @@ package connectfour;
 
 
 public class ConnectFour {
-    int currentplayer = 0;
-    String board[][] = new String[7][6];
-//    Scanner scan = new Scanner(System.in);
-//    String column = scan.nextLine();
-//    int newColumn = Integer.parseInt(column);
-    
-    public void printBoard()
+    protected int currentplayer = 0;
+    private String board[][] = new String[7][6];
+    protected String player1Name, player2Name;
+    //---Prints board for visual output
+    private void printBoard()
     {
         for (int i = 0; i < board[0].length; i++) 
         {
@@ -25,8 +23,26 @@ public class ConnectFour {
             System.out.println();
         }
     }
-   
-    public void wipeBoard()
+    
+    protected void playerNames(String player1, String player2)
+    {
+        player1Name = player1;
+        player2Name = player2;
+    }
+    
+    protected String getCurrentPlayerName()
+    {
+        if (currentplayer == 0)
+        {
+            return player1Name;
+        }
+        else
+        {
+            return player2Name;
+        }
+    }
+    //---Wipes the board for a new game
+    protected void wipeBoard()
     {
         for (int i = 0; i < board.length; i++) 
         {
@@ -37,7 +53,8 @@ public class ConnectFour {
         }
     }
     
-    public String getCurrentPlayer()
+    
+    protected String getCurrentPlayer()
     {
         String answer;
         if (currentplayer == 0)
@@ -51,7 +68,7 @@ public class ConnectFour {
                     
         }
     
-    public String getWinner()
+    protected String getWinner()
     {
         String winner = "";
         int countRedh = 0;
@@ -319,7 +336,7 @@ public class ConnectFour {
         }
     }
     
-    public boolean isFull(int[][] list)
+    private boolean isFull(int[][] list)
             {
                 boolean answer = true;
                 for (int i = 0; i < list.length; i++) 
@@ -338,7 +355,7 @@ public class ConnectFour {
                 return answer;
  
             }
-    public boolean isOver()
+    private boolean isOver()
     {
         boolean answer = false;
         if (getWinner() != null)
@@ -348,7 +365,7 @@ public class ConnectFour {
         return answer;
     }
             
-    public void makeMove(String columnStringIndex)
+    protected void makeMove(String columnStringIndex)
     {
         //---Assures input is a integer and valid column
          if (!columnStringIndex.contentEquals("0") && !columnStringIndex.contentEquals("1") && 
@@ -407,8 +424,35 @@ public class ConnectFour {
         printBoard();
         }
     }   
+    //---Will strip a string of anything but letters and make lower case.
+    private String clean(String aString)
+    {
+       String newString = new String();
+        for (int i = 0; i < aString.length(); i++) {
+            char aCharacter = aString.charAt(i);
+            if (Character.isLetter(aCharacter))
+            {
+             newString += aCharacter;   
+            }
+            else
+            {
+            }
+            
+        }
+        return newString.toLowerCase();
         
+    }
         
+    protected boolean newGame(String response)
+    {
+        boolean answer = false;
+        String cleanedResponse = clean(response);
+        if (cleanedResponse.contains("yes")||cleanedResponse.contentEquals("y"))
+        {
+            answer = true;
+        }
+        return answer;
+    }
     }
     
     
