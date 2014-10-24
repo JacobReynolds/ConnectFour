@@ -13,22 +13,29 @@ import java.util.Scanner;
  * @author colleen-reynolds
  */
 public class test {
-    int answer = 0;
+    //---Declared outside methods so that the game can restart with same
+    //---instance of the game.
+     protected static ConnectFour instance = new ConnectFour();
+     
      public static void main(String[] args) {
-     playGame();
-     ConnectFour instance = new ConnectFour();
-     Scanner input = new Scanner(System.in);
-     
+     //---Creates a board and wipes any old values
+     instance.wipeBoard();
+     playGame(true);
      }
-     
-     private static void playGame()
+
+     protected static void playGame(boolean firstGame)
     {
-        ConnectFour instance = new ConnectFour();
-        instance.wipeBoard();
+        
+        
+        Scanner input = new Scanner(System.in);
+
+        if(firstGame)
+        {
+        
         
         //---Gets player names
         System.out.println("Player 1: What is your name?");
-        Scanner input = new Scanner(System.in);
+        input = new Scanner(System.in);
         String player1Name = input.nextLine();
         
         System.out.println("Player 2: What is your name?");
@@ -37,23 +44,30 @@ public class test {
         
         //---Declares variable for player namse in ConnectFour class
         instance.playerNames(player1Name, player2Name);
+        }
         //---Game playing while loop
-    while (instance.getWinner().contentEquals("No winner yet"))
-    {
-         
-         System.out.println("Please choose a column " + instance.getCurrentPlayerName() + ":");
-         String output = input.nextLine();
-         instance.makeMove(output);
-    }
+            while (instance.getWinner().contentEquals("No winner yet"))
+        {
+             System.out.println("Please choose a column " + instance.getCurrentPlayerName() + ":");
+             String output = input.nextLine();
+             if (output.contentEquals("exit"))
+             {
+                 return;
+             }
+             instance.makeMove(output);
+        }
     
          System.out.println(instance.getWinner());
          System.out.println("Would you like to play again?");
      
+         
+     //---Do they want to play another game
      String output = input.nextLine();
      if (instance.newGame(output))
      {
-         playGame();
          //Start new game
+         instance.wipeBoard();
+         playGame(false);
      }
      else
      {

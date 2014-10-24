@@ -9,8 +9,9 @@ package connectfour;
 
 public class ConnectFour {
     protected int currentplayer = 0;
-    private String board[][] = new String[7][6];
+    private final String board[][] = new String[7][6];
     protected String player1Name, player2Name;
+    
     //---Prints board for visual output
     private void printBoard()
     {
@@ -24,12 +25,14 @@ public class ConnectFour {
         }
     }
     
+    //---Creates player name
     protected void playerNames(String player1, String player2)
     {
         player1Name = player1;
         player2Name = player2;
     }
     
+    //---Returns current players name
     protected String getCurrentPlayerName()
     {
         if (currentplayer == 0)
@@ -41,7 +44,8 @@ public class ConnectFour {
             return player2Name;
         }
     }
-    //---Wipes the board for a new game
+    
+    //---Wipes/Creates the board for a new game
     protected void wipeBoard()
     {
         for (int i = 0; i < board.length; i++) 
@@ -54,23 +58,8 @@ public class ConnectFour {
     }
     
     
-    protected String getCurrentPlayer()
-    {
-        String answer;
-        if (currentplayer == 0)
-        {
-            return "Red";
-        }
-        else 
-        {
-            return "Blue";
-        }
-                    
-        }
-    
     protected String getWinner()
     {
-        String winner = "";
         int countRedh = 0;
         int countBlueh = 0;
 
@@ -234,86 +223,7 @@ public class ConnectFour {
         }
         
         
-        //---Checking for diagonal(Bottom left) winner
-         for (int y = 5; y > 2; y--) 
-        {
-            for (int x = 0; x < 4; x++) 
-            {
-            if (board[x][y].contentEquals("R") && board[x + 1][y - 1].contentEquals("R")
-               && board[x + 2][y - 2].contentEquals("R") && board[x + 3][y - 3].contentEquals("R"))
-                    {
-                      countRedh += 4;  
-                      countBlueh = 0;
-                    }
-            if (board[x][y].contentEquals("B") && board[x + 1][y - 1].contentEquals("B") 
-               && board[x + 2][y - 2].contentEquals("B") && board[x + 3][y - 3].contentEquals("B"))
-            {
-                countRedh = 0;
-                countBlueh += 4;
-            }
-            if (board[x][y].contentEquals("O"))
-            {
-                countRedh = 0;
-                countBlueh = 0;
-            }
-            
-            if (countBlueh == 4 && countRedh == 4)
-            {
-                redWins = true;
-                blueWins = true;
-            }
-            
-            if (countBlueh == 4)
-            {
-                blueWins = true;
-            }
-            if (countRedh == 4)
-            {
-                redWins = true;
-            }
-            }
-        }
-         
-         
-        //---Checking for diagonal(Bottom right) winner
-         for (int y = 5; y > 2; y--) 
-        {
-            for (int x = 6; x > 3; x--) 
-            {
-            if (board[x][y].contentEquals("R") && board[x - 1][y - 1].contentEquals("R")
-               && board[x - 2][y - 2].contentEquals("R") && board[x - 3][y - 3].contentEquals("R"))
-                    {
-                      countRedh += 4;  
-                      countBlueh = 0;
-                    }
-            if (board[x][y].contentEquals("B") && board[x - 1][y - 1].contentEquals("B")
-               && board[x - 2][y - 2].contentEquals("B") && board[x - 3][y - 3].contentEquals("B"))
-            {
-                countRedh = 0;
-                countBlueh += 4;
-            }
-            if (board[x][y].contentEquals("O"))
-            {
-                countRedh = 0;
-                countBlueh = 0;
-            }
-            
-            if (countBlueh == 4 && countRedh == 4)
-            {
-                redWins = true;
-                blueWins = true;
-            }
-            
-            if (countBlueh == 4)
-            {
-                blueWins = true;
-            }
-            if (countRedh == 4)
-            {
-                redWins = true;
-            }
-            }
-        }
+        
 
         
         //---Winner output
@@ -355,15 +265,7 @@ public class ConnectFour {
                 return answer;
  
             }
-    private boolean isOver()
-    {
-        boolean answer = false;
-        if (getWinner() != null)
-        {
-            
-        }
-        return answer;
-    }
+   
             
     protected void makeMove(String columnStringIndex)
     {
