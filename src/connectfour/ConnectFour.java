@@ -234,11 +234,11 @@ public class ConnectFour {
         }
         if (blueWins)
         {
-            return "Congratulations Blue you won!";
+            return "Congratulations " + player2Name + " you won!";
         }
         if (redWins)
         {
-            return "Congratulation Red you won!";
+            return "Congratulations " + player1Name + " you won!";
         }
         else 
         {
